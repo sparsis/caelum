@@ -1,0 +1,59 @@
+:::::::::::::::::::::::::::::::::::::
+:: Configuração do modulo do MySQL ::
+:::::::::::::::::::::::::::::::::::::
+
+Entra na pasta jboss-as-7.1.1.Final/modules 
+
+Lá crie uma pasta "com" (caso não esteja criado). Entre na pasta "com" crie
+nela uma pasta "mysql". Novamente, entre na pasta "mysq"l e crie uma pasta 
+"main", obtendo o caminho 
+
+jboss-as-7.1.1.Final/modules/com/mysql/main
+
+Para esta pasta copia os arquivos modules.xml e o JAR do driver do mysql.
+
+::::::::::::::::::::::::::::::::
+:: Configuração do DataSource ::
+::::::::::::::::::::::::::::::::
+
+Ainda no arquivo standalone.xml da pasta 
+
+jboss-as-7.1.1.Final/standalone/configuration 
+
+adicone dentro da tag <datasources>:
+
+<datasource jndi-name="java:/fj25DS" pool-name="fj25DS"
+	enabled="true" use-java-context="true">
+	<connection-url>jdbc:mysql://localhost:3306/fj25</connection-url>
+	<driver>com.mysql</driver>
+	<pool>
+		<min-pool-size>10</min-pool-size>
+		<max-pool-size>100</max-pool-size>
+		<prefill>true</prefill>
+	</pool>
+	<security>
+		<user-name>root</user-name>
+		<password></password>
+	</security>
+</datasource>
+
+
+
+:::::::::::::::::::::::::::::::::::::
+:: Configuração do driver do MySQL ::
+:::::::::::::::::::::::::::::::::::::
+
+Ainda no arquivo standalone.xml da pasta 
+
+jboss-as-7.1.1.Final/standalone/configuration 
+
+adicone dentro da tag <drivers>:
+
+
+<!-- Demais drivers declarados aqui -->
+
+<driver name="com.mysql" module="com.mysql">
+	<xa-datasource-class>
+		com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+	</xa-datasource-class>
+</driver>
