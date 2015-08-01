@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <copy file="/opt/j2ee/domains/bamboo.mulesource.com/corp/webapps/atlassian-bamboo/data/atlassian-bamboo-4.0.1-mule06-migrtn/xml-data/build-dir/TOOLINGREL-REL2-JOB1/org.mule.tooling.extension.server.3.6.1.ee/feature.xml.template" tofile="/opt/j2ee/domains/bamboo.mulesource.com/corp/webapps/atlassian-bamboo/data/atlassian-bamboo-4.0.1-mule06-migrtn/xml-data/build-dir/TOOLINGREL-REL2-JOB1/org.mule.tooling.extension.server.3.6.1.ee/feature.xml" overwrite="true"/>
+  <replace file="/opt/j2ee/domains/bamboo.mulesource.com/corp/webapps/atlassian-bamboo/data/atlassian-bamboo-4.0.1-mule06-migrtn/xml-data/build-dir/TOOLINGREL-REL2-JOB1/org.mule.tooling.extension.server.3.6.1.ee/feature.xml">
+    <replacefilter token="@muleServerLabel@" value="Mule Server 3.6.1 EE"/>
+  </replace>
+</target>
+</project>
