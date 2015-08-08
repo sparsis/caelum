@@ -1,0 +1,2 @@
+curl -i URL -x GET
+curl -i URL -x POST -d "{transacao:1, valor:100}" -H "content-type: application/json" "accept: application/json"
